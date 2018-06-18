@@ -3,6 +3,7 @@ package com.ce17b019.inventoryapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,13 +31,14 @@ public class Main4Activity extends AppCompatActivity {
                 EditText e5 =(EditText) findViewById(R.id.editText6);
                 String conformpassword= e5.getText().toString();
 
-                Intent intent5 = new Intent(Main4Activity.this,Main3Activity.class);
-                intent5.putExtra("firstname",firstname);
-                intent5.putExtra("lastname",username);
-                intent5.putExtra("email",email);
-                intent5.putExtra("password",password);
-                intent5.putExtra("phone",conformpassword);
-                startActivity(intent5);
+                Intent intent3 = new Intent(Main4Activity.this,Main3Activity.class);
+                intent3.putExtra("firstname",firstname);
+                intent3.putExtra("username",username);
+                intent3.putExtra("email",email);
+                intent3.putExtra("password",password);
+                intent3.putExtra("conformpassword",conformpassword);
+                Log.d("hi", username);
+                startActivity(intent3);
 
 
 

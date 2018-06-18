@@ -25,9 +25,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
+                Intent intent4 = new Intent(MainActivity.this ,Main2Activity.class);
 
-                Intent intent1 = new Intent(MainActivity.this ,Main2Activity.class);
-                startActivity(intent1);
+                intent4.putExtra("item1" ,50);
+                intent4.putExtra("item2" ,45);
+
+                startActivity(intent4);
 
 
 
