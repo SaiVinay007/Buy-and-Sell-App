@@ -11,8 +11,8 @@ import android.widget.TextView;
 public class Main2Activity extends AppCompatActivity {
 
     int number,number1;
-    TextView tv1;
-    TextView tv2;
+    TextView tv12,tv2,tv7,tv10,tv8,tv11 ;
+    Button b11,b12,b7,b8;
 
 
     @Override
@@ -22,50 +22,100 @@ public class Main2Activity extends AppCompatActivity {
 
         Intent intent4 =getIntent();
 
-
-
         int item1 = intent4.getIntExtra("item1",-1);
-        tv1 =  (TextView)findViewById(R.id.textView2);
-        tv1.setText(Integer.toString(item1));
+        tv2 =  (TextView)findViewById(R.id.textView2);
+        tv2.setText(Integer.toString(item1));
         int item2 = intent4.getIntExtra("item2",-1);
-        tv2 = (TextView) findViewById(R.id.textView12);
-        tv2.setText(Integer.toString(item2));
+        tv12 = (TextView) findViewById(R.id.textView12);
+        tv12.setText(Integer.toString(item2));
+
+
+
+        int tag = intent4.getIntExtra("tag",-1);
+        if(tag==1){
+
+            b7 = (Button) findViewById(R.id.button7);
+            b7.setVisibility(View.INVISIBLE);
+            b8 = (Button) findViewById(R.id.button8);
+            b8.setVisibility(View.INVISIBLE);
+            b11 = (Button) findViewById(R.id.button11);
+            b11.setVisibility(View.INVISIBLE);
+            b12 = (Button) findViewById(R.id.button12);
+            b12.setVisibility(View.INVISIBLE);
+        }
+
+
+        Button mycart = (Button) findViewById(R.id.button15);
+        mycart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tv8 = (TextView) findViewById(R.id.textView8);
+                tv11 = (TextView) findViewById(R.id.textView11);
+                tv7 = (TextView) findViewById(R.id.textView7);
+                tv10 = (TextView) findViewById(R.id.textView10);
+
+                Intent intent5 = new Intent(Main2Activity.this,Main5Activity.class);
+                intent5.putExtra("item1",tv7.getText().toString());
+                intent5.putExtra("item2",tv10.getText().toString());
+                intent5.putExtra("q1",tv8.getText().toString());
+                intent5.putExtra("q2",tv11.getText().toString());
+
+                startActivity(intent5);
+
+
+            }
+        });
+
+
+
+
+
+
 
     }
 
     public void add(View view){
-        tv1 = (TextView) findViewById(R.id.textView2);
-        String str1 =tv1.getText().toString();
+        tv2 = (TextView) findViewById(R.id.textView2);
+        String str1 =tv2.getText().toString();
         int a = Integer.parseInt(str1);
 
-        TextView tv = (TextView) findViewById(R.id.textView8);
-        number = Integer.parseInt(tv.getText().toString());
-        number+=1;
-        tv.setText(Integer.toString(number));
-        tv1.setText(Integer.toString(a-1));
+        TextView tv8 = (TextView) findViewById(R.id.textView8);
+        number = Integer.parseInt(tv8.getText().toString());
+
+
+
+
+        if(a>0){
+            number+=1;
+            tv2.setText(Integer.toString(a-1));
+        }
+        else{
+            tv2.setText(Integer.toString(a));
+        }
+        tv8.setText(Integer.toString(number));
 
 
 
     }
     public void substract(View view) {
-        tv1 = (TextView) findViewById(R.id.textView2);
-        String str1 =tv1.getText().toString();
+        tv2 = (TextView) findViewById(R.id.textView2);
+        String str1 =tv2.getText().toString();
         int a = Integer.parseInt(str1);
 
 
-        TextView tv = (TextView) findViewById(R.id.textView8);
-        number = Integer.parseInt(tv.getText().toString());
+        TextView tv8 = (TextView) findViewById(R.id.textView8);
+        number = Integer.parseInt(tv8.getText().toString());
         if(number>0) {
-            tv1.setText(Integer.toString(a + 1));
+            tv2.setText(Integer.toString(a + 1));
         }else{
-            tv1.setText(Integer.toString(a));
+            tv2.setText(Integer.toString(a));
         }
         if (number == 0) {
             number = 0;
         } else {
             number -= 1;
         }
-        tv.setText(Integer.toString(number));
+        tv8.setText(Integer.toString(number));
 
 
 
@@ -73,36 +123,50 @@ public class Main2Activity extends AppCompatActivity {
     }
 
     public void add1(View view){
-        tv2= (TextView) findViewById(R.id.textView12);
-        String str2 =tv2.getText().toString();
+        tv12= (TextView) findViewById(R.id.textView12);
+        String str2 =tv12.getText().toString();
         int b = Integer.parseInt(str2);
 
-        TextView tv = (TextView) findViewById(R.id.textView11);
-        number1 = Integer.parseInt(tv.getText().toString());
-        number1 +=1;
-        tv.setText(Integer.toString(number1));
-        tv2.setText(Integer.toString(b-1));
+        TextView tv11 = (TextView) findViewById(R.id.textView11);
+
+        if(b>0){
+            number1+=1;
+            tv12.setText(Integer.toString(b-1));
+        }
+        else{
+            tv12.setText(Integer.toString(b));
+        }
+        tv11.setText(Integer.toString(number1));
 
     }
     public void substract1(View view) {
-        tv2= (TextView) findViewById(R.id.textView12);
-        String str2 =tv2.getText().toString();
+        tv12= (TextView) findViewById(R.id.textView12);
+        String str2 =tv12.getText().toString();
         int b = Integer.parseInt(str2);
 
-        TextView tv = (TextView) findViewById(R.id.textView11);
-        number1 = Integer.parseInt(tv.getText().toString());
+        TextView tv11 = (TextView) findViewById(R.id.textView11);
+        number1 = Integer.parseInt(tv11.getText().toString());
         if(number1>0) {
-            tv2.setText(Integer.toString(b + 1));
+            tv12.setText(Integer.toString(b + 1));
         }else{
-            tv2.setText(Integer.toString(b));
+            tv12.setText(Integer.toString(b));
         }
         if (number1 == 0) {
             number1 = 0;
         } else {
             number1 -= 1;
         }
-        tv.setText(Integer.toString(number1));
+        tv11.setText(Integer.toString(number1));
 
 
+    }
+
+    public void admin_add1(View view){
+        tv2 = (TextView) findViewById(R.id.textView2);
+        String str1 =tv2.getText().toString();
+        int a = Integer.parseInt(str1);
+
+        tv2.setText(Integer.toString(a + 1));
+        Log.d("hi", Integer.toString(a+1));
     }
 }

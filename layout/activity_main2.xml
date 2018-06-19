@@ -57,6 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_toStartOf="@+id/button8"
+            android:onClick="admin_add1"
             android:text="admin_add" />
 
         <Button
@@ -96,6 +97,15 @@
             android:textSize="25dp"
             android:gravity="center"
             android:text="50" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:layout_alignTop="@+id/textView8"
+            android:layout_toEndOf="@+id/button10"
+            android:gravity="center"
+            android:text="$10 each" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -119,6 +129,16 @@
             android:layout_alignParentBottom="true"
             android:gravity="center"
             android:text="AvailableQuantity" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:layout_alignBottom="@+id/imageView1"
+            android:layout_toEndOf="@+id/button13"
+            android:gravity="center"
+
+            android:text="$20 each" />
 
         <TextView
             android:id="@+id/textView12"
@@ -185,6 +205,20 @@
             android:onClick="add1"
             android:text="+"
             android:textSize="25dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button15"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#08f844"
+            android:text="My cart" />
     </RelativeLayout>
 
 </LinearLayout>
