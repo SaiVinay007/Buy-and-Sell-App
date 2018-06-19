@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Main3Activity extends AppCompatActivity {
 
@@ -32,8 +33,8 @@ public class Main3Activity extends AppCompatActivity {
             }
         });
 
-        Button b1 =(Button) findViewById(R.id.button);
-        b1.setOnClickListener(new View.OnClickListener() {
+        Button login =(Button) findViewById(R.id.button);
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText et1 = (EditText) findViewById(R.id.editText);
@@ -47,16 +48,54 @@ public class Main3Activity extends AppCompatActivity {
                 String email = intent3.getStringExtra("email");
                 String password = intent3.getStringExtra("password");
                 String conformpassword = intent3.getStringExtra("conformpassword");
-//                Log.d("un", username);
- //               Log.d("un",password);
-                Log.d("un",str1);
-                Log.d("un",str2);
+//                int tag = intent3.getIntExtra("tag",-1);
 
 
-                if(str1.equals(username) && str2.equals(password)){
-                    Log.d("hi",  str1);
+
+                if(str1.equals(username) && str2.equals(password)  ){
+
                     Intent intent2 = new Intent(Main3Activity.this,MainActivity.class);
+
                     startActivity(intent2);
+                }
+                else if(str1.equals("vendor1")&&str2.equals("1") ){
+                    Intent intent6 = new Intent(Main3Activity.this,Main2Activity.class);
+                    intent6.putExtra("item1" ,50);
+                    intent6.putExtra("item2" ,45);
+                    intent6.putExtra("tag1" ,0);
+                    startActivity(intent6);
+
+                }
+                else if(str1.equals("vendor2")&&str2.equals("2")){
+                    Intent intent6 = new Intent(Main3Activity.this,Main2Activity.class);
+                    intent6.putExtra("item1" ,10);
+                    intent6.putExtra("item2" ,25);
+                    intent6.putExtra("tag1" ,0);
+                    startActivity(intent6);
+                }
+                else if(str1.equals("vendor3")&&str2.equals("3")){
+                    Intent intent6 = new Intent(Main3Activity.this,Main2Activity.class);
+                    intent6.putExtra("item1" ,110);
+                    intent6.putExtra("item2" ,65);
+                    intent6.putExtra("tag1" ,0);
+                    startActivity(intent6);
+                }
+                else if(str1.equals("vendor4")&&str2.equals("4")){
+                    Intent intent6 = new Intent(Main3Activity.this,Main2Activity.class);
+                    intent6.putExtra("item1" ,60);
+                    intent6.putExtra("item2" ,35);
+                    intent6.putExtra("tag1" ,0);
+                    startActivity(intent6);
+                }
+                else if(str1.equals("vendor5")&&str2.equals("5")){
+                    Intent intent6 = new Intent(Main3Activity.this,Main2Activity.class);
+                    intent6.putExtra("item1" ,5);
+                    intent6.putExtra("item2" ,4);
+                    intent6.putExtra("tag1" ,0);
+                    startActivity(intent6);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Invalid username or password",Toast.LENGTH_LONG).show();
                 }
 
 

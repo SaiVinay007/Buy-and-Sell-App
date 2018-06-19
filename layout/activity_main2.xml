@@ -66,6 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
+            android:onClick="admin_substract1"
             android:text="admin_remove" />
 
         <Button
@@ -176,6 +177,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
+            android:onClick="admin_substract2"
             android:text="admin_remove" />
 
         <Button
@@ -184,6 +186,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_toStartOf="@+id/button11"
+            android:onClick="admin_add2"
             android:text="admin_add" />
 
         <Button
