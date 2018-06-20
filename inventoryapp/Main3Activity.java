@@ -13,6 +13,7 @@ import android.widget.Toast;
 public class Main3Activity extends AppCompatActivity {
 
 
+
     String str1;
     String str2;
 
