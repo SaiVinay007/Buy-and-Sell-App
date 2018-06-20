@@ -1,6 +1,7 @@
 package com.ce17b019.inventoryapp;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,7 +13,7 @@ import android.widget.Toast;
 
 public class Main3Activity extends AppCompatActivity {
 
-
+    DataManager dm;
 
     String str1;
     String str2;
@@ -21,6 +22,16 @@ public class Main3Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
+
+        dm = new DataManager(this);
+        dm.insert("item1",10);
+        dm.insert("item2",10);
+        dm.insert("item3",10);
+        dm.insert("item4",10);
+        dm.insert("item5",10);
+        dm.insert("item6",10);
+        dm.insert("item7",10);
+        dm.insert("item8",10);
 
 
 
@@ -102,5 +113,13 @@ public class Main3Activity extends AppCompatActivity {
 
             }
         });
+
+
+    }
+
+    public void showData(Cursor c){
+        while (c.moveToNext()){
+            Log.i(c.getString(1), c.getString(2));
+        }
     }
 }
