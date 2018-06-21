@@ -1,6 +1,9 @@
 package com.ce17b019.inventoryapp;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,12 +18,23 @@ public class Main2Activity extends AppCompatActivity {
     Button b11,b12,b7,b8;
     Button b9,b10,b13,b14,b15;
     TextView tv22,tv21;
+    int tag2,tag3,tag4;
+
+    DataManager dm;
+
+    SQLiteDatabase db;
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        dm = new DataManager(this);
+        db = dm.getWritableDatabase();
+
+
 
         Intent intent4 =getIntent();
 
@@ -34,7 +48,8 @@ public class Main2Activity extends AppCompatActivity {
 
 
         int tag = intent4.getIntExtra("tag",-1);
-        if(tag==1){
+         tag3 = intent4.getIntExtra("tag3",-1);
+        if(tag==0){
 
             b7 = (Button) findViewById(R.id.button7);
             b7.setVisibility(View.INVISIBLE);
@@ -48,8 +63,9 @@ public class Main2Activity extends AppCompatActivity {
         }
 
         Intent intent6 = getIntent();
-        int tag1 = intent6.getIntExtra("tag1",-1);
-        if(tag1==0){
+        tag2 = intent6.getIntExtra("tag1",-1);
+        tag4 = intent6.getIntExtra("tag4",-1);
+        if(tag2==1 ||tag2==2 ||tag2==3 ||tag2==4 ||tag2==5){
             b9 = (Button) findViewById(R.id.button9);
             b9.setVisibility(View.INVISIBLE);
             b10 = (Button) findViewById(R.id.button10);
@@ -114,10 +130,51 @@ public class Main2Activity extends AppCompatActivity {
 
         if(a>0){
             number+=1;
+            ContentValues values = new ContentValues();
+            values.put("quantity",Integer.toString(a-1));
+            String[] projection = {"name","quantity"};
+            Log.d("tag111", Integer.toString(tag3));
+//            Log.d("helklsdo","sdfiuhsduig");
+//
+//            String projections[] = {"name","quantity"};
+//            Cursor c = db.query("login", projections,null,null,null,null,null);
+//            c.moveToPosition(0);
+//            Log.d("lkndfklgdjfkl",c.getString(1));
+
+
+            if(tag3==1 || tag4==1){
+
+                db.update("item",values,"name =?",new String[]{"item1"});
+            }else if (tag3==2 || tag4==2){
+                db.update("item",values,"name =?",new String[]{"item3"});
+            }else if (tag3==3 || tag4==3){
+                db.update("item",values,"name =?",new String[]{"item5"});
+            }else if (tag3==4 || tag4==4){
+                db.update("item",values,"name =?",new String[]{"item7"});
+            }else if (tag3==5 || tag4==5){
+                db.update("item",values,"name =?",new String[]{"item9"});
+            }
+
             tv2.setText(Integer.toString(a-1));
         }
         else{
             tv2.setText(Integer.toString(a));
+            ContentValues values = new ContentValues();
+            values.put("quantity",Integer.toString(a));
+            String[] projection = {"name","quantity"};
+
+
+            if(tag3==1 || tag4==1){
+                db.update("item",values,"name =?",new String[]{"item1"});
+            }else if (tag3==2 || tag4==2){
+                db.update("item",values,"name =?",new String[]{"item3"});
+            }else if (tag3==3 || tag4==3){
+                db.update("item",values,"name =?",new String[]{"item5"});
+            }else if (tag3==4 || tag4==4){
+                db.update("item",values,"name =?",new String[]{"item7"});
+            }else if (tag3==5 || tag4==5){
+                db.update("item",values,"name =?",new String[]{"item9"});
+            }
         }
         tv8.setText(Integer.toString(number));
 
@@ -134,8 +191,43 @@ public class Main2Activity extends AppCompatActivity {
         number = Integer.parseInt(tv8.getText().toString());
         if(number>0) {
             tv2.setText(Integer.toString(a + 1));
+
+            ContentValues values = new ContentValues();
+            values.put("quantity",Integer.toString(a+1));
+            String[] projection = {"name","quantity"};
+
+
+            if(tag3==1 || tag4==1){
+                db.update("item",values,"name =?",new String[]{"item1"});
+            }else if (tag3==2 || tag4==2){
+                db.update("item",values,"name =?",new String[]{"item3"});
+            }else if (tag3==3 || tag4==3){
+                db.update("item",values,"name =?",new String[]{"item5"});
+            }else if (tag3==4 || tag4==4){
+                db.update("item",values,"name =?",new String[]{"item7"});
+            }else if (tag3==5 || tag4==5){
+                db.update("item",values,"name =?",new String[]{"item9"});
+            }
+
         }else{
             tv2.setText(Integer.toString(a));
+
+            ContentValues values = new ContentValues();
+            values.put("quantity",Integer.toString(a));
+            String[] projection = {"name","quantity"};
+
+
+            if(tag3==1 || tag4==1){
+                db.update("item",values,"name =?",new String[]{"item1"});
+            }else if (tag3==2 || tag4==2){
+                db.update("item",values,"name =?",new String[]{"item3"});
+            }else if (tag3==3 || tag4==3){
+                db.update("item",values,"name =?",new String[]{"item5"});
+            }else if (tag3==4 || tag4==4){
+                db.update("item",values,"name =?",new String[]{"item7"});
+            }else if (tag3==5 || tag4==5){
+                db.update("item",values,"name =?",new String[]{"item9"});
+            }
         }
         if (number == 0) {
             number = 0;
@@ -156,11 +248,46 @@ public class Main2Activity extends AppCompatActivity {
 
         TextView tv11 = (TextView) findViewById(R.id.textView11);
 
+        ContentValues values = new ContentValues();
+
+
         if(b>0){
             number1+=1;
+
+            values.put("quantity",Integer.toString(b-1));
+            String[] projection = {"name","quantity"};
+
+
+            if(tag3==1 || tag4==1){
+                db.update("item",values,"name =?",new String[]{"item2"});
+            }else if (tag3==2 || tag4==2){
+                db.update("item",values,"name =?",new String[]{"item4"});
+            }else if (tag3==3 || tag4==3){
+                db.update("item",values,"name =?",new String[]{"item6"});
+            }else if (tag3==4 || tag4==4){
+                db.update("item",values,"name =?",new String[]{"item8"});
+            }else if (tag3==5 || tag4==5){
+                db.update("item",values,"name =?",new String[]{"item10"});
+            }
             tv12.setText(Integer.toString(b-1));
         }
         else{
+
+            values.put("quantity",Integer.toString(b));
+            String[] projection = {"name","quantity"};
+
+            if(tag3==1 || tag4==1){
+                db.update("item",values,"name =?",new String[]{"item2"});
+            }else if (tag3==2 || tag4==2){
+                db.update("item",values,"name =?",new String[]{"item4"});
+            }else if (tag3==3 || tag4==3){
+                db.update("item",values,"name =?",new String[]{"item6"});
+            }else if (tag3==4 || tag4==4){
+                db.update("item",values,"name =?",new String[]{"item8"});
+            }else if (tag3==5 || tag4==5){
+                db.update("item",values,"name =?",new String[]{"item10"});
+            }
+
             tv12.setText(Integer.toString(b));
         }
         tv11.setText(Integer.toString(number1));
@@ -173,9 +300,44 @@ public class Main2Activity extends AppCompatActivity {
 
         TextView tv11 = (TextView) findViewById(R.id.textView11);
         number1 = Integer.parseInt(tv11.getText().toString());
+
+        ContentValues values = new ContentValues();
+
+
         if(number1>0) {
+            values.put("quantity",Integer.toString(b+1));
+            String[] projection = {"name","quantity"};
+
+
+            if(tag3==1 || tag4==1){
+                db.update("item",values,"name =?",new String[]{"item2"});
+            }else if (tag3==2 || tag4==2){
+                db.update("item",values,"name =?",new String[]{"item4"});
+            }else if (tag3==3 || tag4==3){
+                db.update("item",values,"name =?",new String[]{"item6"});
+            }else if (tag3==4 || tag4==4){
+                db.update("item",values,"name =?",new String[]{"item8"});
+            }else if (tag3==5 || tag4==5){
+                db.update("item",values,"name =?",new String[]{"item10"});
+            }
             tv12.setText(Integer.toString(b + 1));
         }else{
+
+            values.put("quantity",Integer.toString(b));
+            String[] projection = {"name","quantity"};
+
+
+            if(tag3==1 || tag4==1){
+                db.update("item",values,"name =?",new String[]{"item2"});
+            }else if (tag3==2 || tag4==2){
+                db.update("item",values,"name =?",new String[]{"item4"});
+            }else if (tag3==3 || tag4==3){
+                db.update("item",values,"name =?",new String[]{"item6"});
+            }else if (tag3==4 || tag4==4){
+                db.update("item",values,"name =?",new String[]{"item8"});
+            }else if (tag3==5 || tag4==5){
+                db.update("item",values,"name =?",new String[]{"item10"});
+            }
             tv12.setText(Integer.toString(b));
         }
         if (number1 == 0) {
@@ -193,6 +355,23 @@ public class Main2Activity extends AppCompatActivity {
         String str1 =tv2.getText().toString();
         int a = Integer.parseInt(str1);
 
+        ContentValues values = new ContentValues();
+        values.put("quantity",Integer.toString(a+1));
+        String[] projection = {"name","quantity"};
+
+
+        if(tag3==1 || tag4==1){
+            db.update("item",values,"name =?",new String[]{"item1"});
+        }else if (tag3==2 || tag4==2){
+            db.update("item",values,"name =?",new String[]{"item3"});
+        }else if (tag3==3 || tag4==3){
+            db.update("item",values,"name =?",new String[]{"item5"});
+        }else if (tag3==4 || tag4==4){
+            db.update("item",values,"name =?",new String[]{"item7"});
+        }else if (tag3==5 || tag4==5){
+            db.update("item",values,"name =?",new String[]{"item9"});
+        }
+
         tv2.setText(Integer.toString(a + 1));
 
     }
@@ -200,10 +379,42 @@ public class Main2Activity extends AppCompatActivity {
         tv2 = (TextView) findViewById(R.id.textView2);
         String str1 =tv2.getText().toString();
         int a = Integer.parseInt(str1);
+
+        ContentValues values = new ContentValues();
         if(a>0){
+
+            values.put("quantity",Integer.toString(a-1));
+            String[] projection = {"name","quantity"};
+
+            if(tag3==1 || tag4==1){
+                db.update("item",values,"name =?",new String[]{"item1"});
+            }else if (tag3==2 || tag4==2){
+                db.update("item",values,"name =?",new String[]{"item3"});
+            }else if (tag3==3 || tag4==3){
+                db.update("item",values,"name =?",new String[]{"item5"});
+            }else if (tag3==4 || tag4==4){
+                db.update("item",values,"name =?",new String[]{"item7"});
+            }else if (tag3==5 || tag4==5){
+                db.update("item",values,"name =?",new String[]{"item9"});
+            }
             tv2.setText(Integer.toString(a - 1));
 
         }else{
+
+            values.put("quantity",Integer.toString(a));
+            String[] projection = {"name","quantity"};
+
+            if(tag3==1 || tag4==1){
+                db.update("item",values,"name =?",new String[]{"item1"});
+            }else if (tag3==2 || tag4==2){
+                db.update("item",values,"name =?",new String[]{"item3"});
+            }else if (tag3==3 || tag4==3){
+                db.update("item",values,"name =?",new String[]{"item5"});
+            }else if (tag3==4 || tag4==4){
+                db.update("item",values,"name =?",new String[]{"item7"});
+            }else if (tag3==5 || tag4==5){
+                db.update("item",values,"name =?",new String[]{"item9"});
+            }
             tv2.setText(Integer.toString(a));
 
         }
@@ -214,6 +425,21 @@ public class Main2Activity extends AppCompatActivity {
         String str1 =tv12.getText().toString();
         int a = Integer.parseInt(str1);
 
+        ContentValues values = new ContentValues();
+        values.put("quantity",Integer.toString(a+1));
+        String[] projection = {"name","quantity"};
+
+        if(tag3==1 || tag4==1){
+            db.update("item",values,"name =?",new String[]{"item2"});
+        }else if (tag3==2 || tag4==2){
+            db.update("item",values,"name =?",new String[]{"item4"});
+        }else if (tag3==3 || tag4==3){
+            db.update("item",values,"name =?",new String[]{"item6"});
+        }else if (tag3==4 || tag4==4){
+            db.update("item",values,"name =?",new String[]{"item8"});
+        }else if (tag3==5 || tag4==5){
+            db.update("item",values,"name =?",new String[]{"item10"});
+        }
         tv12.setText(Integer.toString(a + 1));
 
     }
@@ -221,10 +447,39 @@ public class Main2Activity extends AppCompatActivity {
         tv12 = (TextView) findViewById(R.id.textView12);
         String str1 =tv12.getText().toString();
         int a = Integer.parseInt(str1);
+
+        ContentValues values = new ContentValues();
         if(a>0){
+            values.put("quantity",Integer.toString(a+1));
+            String[] projection = {"name","quantity"};
+
+            if(tag3==1 || tag4==1){
+                db.update("item",values,"name =?",new String[]{"item2"});
+            }else if (tag3==2 || tag4==2){
+                db.update("item",values,"name =?",new String[]{"item4"});
+            }else if (tag3==3 || tag4==3){
+                db.update("item",values,"name =?",new String[]{"item6"});
+            }else if (tag3==4 || tag4==4){
+                db.update("item",values,"name =?",new String[]{"item8"});
+            }else if (tag3==5 || tag4==5){
+                db.update("item",values,"name =?",new String[]{"item10"});
+            }
             tv12.setText(Integer.toString(a - 1));
 
         }else{
+            values.put("quantity",Integer.toString(a));
+            String[] projection = {"name","quantity"};
+            if(tag3==1 || tag4==1){
+                db.update("item",values,"name =?",new String[]{"item2"});
+            }else if (tag3==2 || tag4==2){
+                db.update("item",values,"name =?",new String[]{"item4"});
+            }else if (tag3==3 || tag4==3){
+                db.update("item",values,"name =?",new String[]{"item6"});
+            }else if (tag3==4 || tag4==4){
+                db.update("item",values,"name =?",new String[]{"item8"});
+            }else if (tag3==5 || tag4==5){
+                db.update("item",values,"name =?",new String[]{"item10"});
+            }
             tv12.setText(Integer.toString(a));
 
         }

@@ -22,12 +22,16 @@ public class Main3Activity extends AppCompatActivity {
     String str1;
     String str2;
     int position;
+    DataManager dm;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
+        dm = new DataManager(this);
+        db = dm.getReadableDatabase();
 
 
         TextView tv1=(TextView) findViewById(R.id.textView);
@@ -55,10 +59,9 @@ public class Main3Activity extends AppCompatActivity {
                 String projections[] = {"firstname","username","email","password","conformpassword"};
                 Cursor c = db.query("login", projections,null,null,null,null,null);
                 Log.d("COUNT", Arrays.toString(c.getColumnNames()));
-//                c.moveToPrevious();
-//                String firstname=c.getString(0);
-//                String username=c.getString(1);
-//                String password = c.getString(3);
+
+
+
                 c.moveToFirst();
                 Log.d("first",c.getString(1));
                 while (!c.isAfterLast()){
@@ -83,13 +86,7 @@ public class Main3Activity extends AppCompatActivity {
                 String password = c.getString(3);
                 Log.d("pwd", password);
 
-//                Intent intent3 = getIntent();
-//               String firstname = intent3.getStringExtra("firstname");
-//               String username = intent3.getStringExtra("username");
-//                String email = intent3.getStringExtra("email");
-//                String password = intent3.getStringExtra("password");
-//                String conformpassword = intent3.getStringExtra("conformpassword");
-//               int tag = intent3.getIntExtra("tag",-1);
+
 
 
 
@@ -101,38 +98,83 @@ public class Main3Activity extends AppCompatActivity {
                 }
                 else if(str1.equals("vendor1")&&str2.equals("1") ){
                     Intent intent6 = new Intent(Main3Activity.this,Main2Activity.class);
-                    intent6.putExtra("item1" ,50);
-                    intent6.putExtra("item2" ,45);
-                    intent6.putExtra("tag1" ,0);
+
+                    String projection[] = {"name","quantity"};
+                    Cursor c1 = db.query("item",projection,null,null,null,null,null);
+                    c1.moveToPosition(0);
+
+                    intent6.putExtra("item1" ,Integer.parseInt(c1.getString(1)));
+
+                    c1.moveToPosition(1);
+                    intent6.putExtra("item2" ,Integer.parseInt(c1.getString(1)));
+
+
+                    intent6.putExtra("tag1" ,1);
+                    intent6.putExtra("tag4" ,1);
+
                     startActivity(intent6);
 
                 }
                 else if(str1.equals("vendor2")&&str2.equals("2")){
                     Intent intent6 = new Intent(Main3Activity.this,Main2Activity.class);
-                    intent6.putExtra("item1" ,10);
-                    intent6.putExtra("item2" ,25);
-                    intent6.putExtra("tag1" ,0);
+
+                    String projection[] = {"name","quantity"};
+                    Cursor c1 = db.query("item",projection,null,null,null,null,null);
+                    c1.moveToPosition(2);
+                    intent6.putExtra("item1" ,Integer.parseInt(c1.getString(1)));
+
+                    c1.moveToPosition(3);
+                    intent6.putExtra("item2" ,Integer.parseInt(c1.getString(1)));
+
+
+                    intent6.putExtra("tag1" ,2);
+                    intent6.putExtra("tag4" ,2);
                     startActivity(intent6);
                 }
                 else if(str1.equals("vendor3")&&str2.equals("3")){
                     Intent intent6 = new Intent(Main3Activity.this,Main2Activity.class);
-                    intent6.putExtra("item1" ,110);
-                    intent6.putExtra("item2" ,65);
-                    intent6.putExtra("tag1" ,0);
+
+                    String projection[] = {"name","quantity"};
+                    Cursor c1 = db.query("item",projection,null,null,null,null,null);
+                    c1.moveToPosition(4);
+                    intent6.putExtra("item1" ,Integer.parseInt(c1.getString(1)));
+
+                    c1.moveToPosition(5);
+                    intent6.putExtra("item2" ,Integer.parseInt(c1.getString(1)));
+
+                    intent6.putExtra("tag1" ,3);
+                    intent6.putExtra("tag4" ,3);
                     startActivity(intent6);
                 }
                 else if(str1.equals("vendor4")&&str2.equals("4")){
                     Intent intent6 = new Intent(Main3Activity.this,Main2Activity.class);
-                    intent6.putExtra("item1" ,60);
-                    intent6.putExtra("item2" ,35);
-                    intent6.putExtra("tag1" ,0);
+
+                    String projection[] = {"name","quantity"};
+                    Cursor c1 = db.query("item",projection,null,null,null,null,null);
+                    c1.moveToPosition(6);
+                    intent6.putExtra("item1" ,Integer.parseInt(c1.getString(1)));
+
+                    c1.moveToPosition(7);
+                    intent6.putExtra("item2" ,Integer.parseInt(c1.getString(1)));
+
+
+                    intent6.putExtra("tag1" ,4);
+                    intent6.putExtra("tag4" ,4);
                     startActivity(intent6);
                 }
                 else if(str1.equals("vendor5")&&str2.equals("5")){
                     Intent intent6 = new Intent(Main3Activity.this,Main2Activity.class);
-                    intent6.putExtra("item1" ,5);
-                    intent6.putExtra("item2" ,4);
-                    intent6.putExtra("tag1" ,0);
+
+                    String projection[] = {"name","quantity"};
+                    Cursor c1 = db.query("item",projection,null,null,null,null,null);
+                    c1.moveToPosition(8);
+                    intent6.putExtra("item1" ,Integer.parseInt(c1.getString(1)));
+
+                    c1.moveToPosition(9);
+                    intent6.putExtra("item2" ,Integer.parseInt(c1.getString(1)));
+
+                    intent6.putExtra("tag1" ,5);
+                    intent6.putExtra("tag4" ,5);
                     startActivity(intent6);
                 }
                 else{
