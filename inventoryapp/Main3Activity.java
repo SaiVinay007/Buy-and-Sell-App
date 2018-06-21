@@ -2,6 +2,7 @@ package com.ce17b019.inventoryapp;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,28 +12,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.SQLData;
+import java.util.Arrays;
+
 public class Main3Activity extends AppCompatActivity {
 
-    DataManager dm;
+
 
     String str1;
     String str2;
+    int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
-
-        dm = new DataManager(this);
-        dm.insert("item1",10);
-        dm.insert("item2",10);
-        dm.insert("item3",10);
-        dm.insert("item4",10);
-        dm.insert("item5",10);
-        dm.insert("item6",10);
-        dm.insert("item7",10);
-        dm.insert("item8",10);
-
 
 
 
@@ -45,7 +39,7 @@ public class Main3Activity extends AppCompatActivity {
             }
         });
 
-        Button login =(Button) findViewById(R.id.button);
+        final Button login =(Button) findViewById(R.id.button);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,13 +48,48 @@ public class Main3Activity extends AppCompatActivity {
 
                 str1= et1.getText().toString();
                 str2= et2.getText().toString();
-                Intent intent3 = getIntent();
-                String firstname = intent3.getStringExtra("firstname");
-                String username = intent3.getStringExtra("username");
-                String email = intent3.getStringExtra("email");
-                String password = intent3.getStringExtra("password");
-                String conformpassword = intent3.getStringExtra("conformpassword");
-//                int tag = intent3.getIntExtra("tag",-1);
+
+
+                DataManager dm = new DataManager(Main3Activity.this);
+                SQLiteDatabase  db = dm.getReadableDatabase();
+                String projections[] = {"firstname","username","email","password","conformpassword"};
+                Cursor c = db.query("login", projections,null,null,null,null,null);
+                Log.d("COUNT", Arrays.toString(c.getColumnNames()));
+//                c.moveToPrevious();
+//                String firstname=c.getString(0);
+//                String username=c.getString(1);
+//                String password = c.getString(3);
+                c.moveToFirst();
+                Log.d("first",c.getString(1));
+                while (!c.isAfterLast()){
+
+                    if(c.getString(1).equals(str1)){
+                        Log.d("entered if","hello");
+                        Log.d(str1, c.getString(1));
+                        position = c.getPosition();
+                        break;
+                    }else {
+                        Log.d(str1,c.getString(1));
+                        c.moveToNext();
+
+
+                    }
+
+                }
+                c.moveToPosition(position);
+
+                String username=c.getString(1);
+                Log.d("user", username);
+                String password = c.getString(3);
+                Log.d("pwd", password);
+
+//                Intent intent3 = getIntent();
+//               String firstname = intent3.getStringExtra("firstname");
+//               String username = intent3.getStringExtra("username");
+//                String email = intent3.getStringExtra("email");
+//                String password = intent3.getStringExtra("password");
+//                String conformpassword = intent3.getStringExtra("conformpassword");
+//               int tag = intent3.getIntExtra("tag",-1);
 
 
 
