@@ -2,7 +2,10 @@ package com.ce17b019.inventoryapp;
 
 import android.content.ContentValues;
 import android.content.Intent;
+<<<<<<< HEAD
 import android.database.Cursor;
+=======
+>>>>>>> bf4f5258124a1688a38622f4b1fcef18222bcf50
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,7 +21,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         DataManager dm = new DataManager(this);
+<<<<<<< HEAD
         final SQLiteDatabase db1 = dm.getWritableDatabase();
+=======
+        SQLiteDatabase db1 = dm.getWritableDatabase();
+>>>>>>> bf4f5258124a1688a38622f4b1fcef18222bcf50
 
         ContentValues values1 = new ContentValues();
         values1.put("name","item1");
@@ -82,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent4 = new Intent(MainActivity.this ,Main2Activity.class);
 
+<<<<<<< HEAD
                 String projection[] = {"name","quantity"};
                 Cursor c = db1.query("item",projection,null,null,null,null,null);
                 c.moveToPosition(0);
@@ -90,6 +98,10 @@ public class MainActivity extends AppCompatActivity {
                 c.moveToPosition(1);
                 intent4.putExtra("item2" ,Integer.parseInt(c.getString(1)));
 
+=======
+//                intent4.putExtra("item1" ,50);
+//                intent4.putExtra("item2" ,45);
+>>>>>>> bf4f5258124a1688a38622f4b1fcef18222bcf50
                 intent4.putExtra("tag",1);
                 startActivity(intent4);
 
@@ -106,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent4 = new Intent(MainActivity.this ,Main2Activity.class);
 
+<<<<<<< HEAD
                 String projection[] = {"name","quantity"};
                 Cursor c = db1.query("item",projection,null,null,null,null,null);
 
@@ -114,6 +127,10 @@ public class MainActivity extends AppCompatActivity {
                 c.moveToPosition(3);
                 intent4.putExtra("item2" ,Integer.parseInt(c.getString(1)));
 
+=======
+//                intent4.putExtra("item1" ,10);
+//                intent4.putExtra("item2" ,25);
+>>>>>>> bf4f5258124a1688a38622f4b1fcef18222bcf50
                 intent4.putExtra("tag",1);
                 startActivity(intent4);
 
@@ -128,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent4 = new Intent(MainActivity.this ,Main2Activity.class);
 
+<<<<<<< HEAD
                 String projection[] = {"name","quantity"};
                 Cursor c = db1.query("item",projection,null,null,null,null,null);
 
@@ -136,6 +154,10 @@ public class MainActivity extends AppCompatActivity {
                 c.moveToPosition(5);
                 intent4.putExtra("item2" ,Integer.parseInt(c.getString(1)));
 
+=======
+//                intent4.putExtra("item1" ,110);
+//                intent4.putExtra("item2" ,65);
+>>>>>>> bf4f5258124a1688a38622f4b1fcef18222bcf50
                 intent4.putExtra("tag",1);
                 startActivity(intent4);
 
@@ -150,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent4 = new Intent(MainActivity.this ,Main2Activity.class);
 
+<<<<<<< HEAD
                 String projection[] = {"name","quantity"};
                 Cursor c = db1.query("item",projection,null,null,null,null,null);
 
@@ -158,6 +181,10 @@ public class MainActivity extends AppCompatActivity {
                 c.moveToPosition(7);
                 intent4.putExtra("item2" ,Integer.parseInt(c.getString(1)));
 
+=======
+//                intent4.putExtra("item1" ,60);
+//                intent4.putExtra("item2" ,35);
+>>>>>>> bf4f5258124a1688a38622f4b1fcef18222bcf50
                 intent4.putExtra("tag",1);
                 startActivity(intent4);
 
@@ -172,6 +199,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent4 = new Intent(MainActivity.this ,Main2Activity.class);
 
+<<<<<<< HEAD
                 String projection[] = {"name","quantity"};
                 Cursor c = db1.query("item",projection,null,null,null,null,null);
 
@@ -180,6 +208,10 @@ public class MainActivity extends AppCompatActivity {
                 c.moveToPosition(9);
                 intent4.putExtra("item2" ,Integer.parseInt(c.getString(1)));
 
+=======
+//                intent4.putExtra("item1" ,5);
+//                intent4.putExtra("item2" ,4);
+>>>>>>> bf4f5258124a1688a38622f4b1fcef18222bcf50
                 intent4.putExtra("tag",1);
                 startActivity(intent4);
 
