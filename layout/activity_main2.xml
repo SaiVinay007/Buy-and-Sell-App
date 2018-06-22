@@ -19,7 +19,7 @@
             android:layout_width="80dp"
             android:layout_height="75dp"
 
-            app:srcCompat="@drawable/ic_launcher_background"
+
             tools:ignore="VectorDrawableCompat" />
 
         <TextView
@@ -38,7 +38,7 @@
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/imageView"
             android:gravity="center"
-            android:text="item1" />
+             />
 
 
         <TextView
@@ -119,7 +119,6 @@
             android:layout_width="80dp"
             android:layout_height="75dp"
 
-            app:srcCompat="@drawable/ic_launcher_background"
             tools:ignore="VectorDrawableCompat" />
 
         <TextView
@@ -158,7 +157,7 @@
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/imageView1"
             android:gravity="center"
-            android:text="item1" />
+          />
 
 
         <TextView

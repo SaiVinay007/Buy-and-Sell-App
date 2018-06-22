@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Main2Activity extends AppCompatActivity {
@@ -19,6 +20,9 @@ public class Main2Activity extends AppCompatActivity {
     Button b9,b10,b13,b14,b15;
     TextView tv22,tv21;
     int tag2,tag3,tag4;
+
+
+    ImageView view1,view2;
 
     DataManager dm;
 
@@ -87,8 +91,54 @@ public class Main2Activity extends AppCompatActivity {
 
         }
 
+        view1 = (ImageView) findViewById(R.id.imageView);
+        view2 = (ImageView) findViewById(R.id.imageView1);
+        tv7 = (TextView) findViewById(R.id.textView7);
+        tv10 = (TextView) findViewById(R.id.textView10);
+        tv21 = (TextView) findViewById(R.id.textView21);
+        tv22 = (TextView) findViewById(R.id.textView22);
 
-        Button mycart = (Button) findViewById(R.id.button15);
+        if(tag3==1 || tag4==1){
+            tv7.setText("Chocolate");
+            tv10.setText("Icecream");
+            tv21.setText("$20");
+            tv22.setText("$30");
+            view1.setImageResource(R.drawable.index1);
+            view2.setImageResource(R.drawable.index3);
+
+        }else if (tag3==2 || tag4==2){
+            tv7.setText("Apple");
+            tv10.setText("Mango");
+            tv21.setText("$15");
+            tv22.setText("$10");
+            view1.setImageResource(R.drawable.index4);
+            view2.setImageResource(R.drawable.index5);
+        }else if (tag3==3 || tag4==3){
+            tv7.setText("Potato");
+            tv10.setText("Carrot");
+            tv21.setText("$4");
+            tv22.setText("$3");
+            view1.setImageResource(R.drawable.index6);
+            view2.setImageResource(R.drawable.index7);
+        }else if (tag3==4 || tag4==4){
+            tv7.setText("Quartz");
+            tv10.setText("Rado");
+            tv21.setText("$200");
+            tv22.setText("$300");
+            view1.setImageResource(R.drawable.index8);
+            view2.setImageResource(R.drawable.index9);
+        }else if (tag3==5 || tag4==5){
+            tv7.setText("Predator");
+            tv10.setText("hp pavilion");
+            tv21.setText("$3000");
+            tv22.setText("$2400");
+            view1.setImageResource(R.drawable.index10);
+            view2.setImageResource(R.drawable.index11);
+        }
+
+
+
+    Button mycart = (Button) findViewById(R.id.button15);
         mycart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
